@@ -7,8 +7,9 @@ export default function App(){
     const [tasks, setTasks] = useState([]);
 
     const addNewTask = (event) => {
-        console.log(event);
+        // console.log(event);
         event.preventDefault()
+        if (newTask.length < 1) return;
         setTasks( (prevTasks) => [newTask, ...prevTasks]);
         setNewTask('');
     };
@@ -17,8 +18,9 @@ export default function App(){
         setNewTask(target.value);
     };
 
-    const handleDelete = ({ target }) => {
-        console.log(target);
+    const handleDelete = (key) => {
+        setTasks( (prevTasks)=> 
+            prevTasks.filter( (ele, idx) => idx!==key));
     };
 
     return (
